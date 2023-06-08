@@ -1,16 +1,11 @@
-# Sting formatting 
-# - using f-string
-# - using Template Literals
+# Getting User Input
+# Input value entered will return a string type
 
-name = "bob"
-name = "Jason"
-today = "Thursday"
-greeting = f">> f-string: Hello, {name}"  # Using f-string for string formatting
-greeting3 = f">> f-string: Hello {name} today is {today}"
-greeting1 = ">> Template Literal: Hello, {}".format(name) # Using template literal for string formatting
-greeting2 = ">> Template Literal: Good morning {}, today is {}".format(name, today)
+# name = input("Please enter you name: ")
+# age = input("Please enter you age: ")
+# print(f"Hi {name}, you are {age} years old")
 
-print(greeting)
-print(greeting3)
-print(greeting1)
-print(greeting2)
+# Mathematic operation from input
+sizeInput = input("How bis is your house (in squares feet): ")
+squareMeter = int(sizeInput) / 10.8    #converting sting into int (a number)
+print(f"Square feet: {sizeInput} is {squareMeter:.2f} square meters") #Show the number for 2dp (.2f)
