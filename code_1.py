@@ -1,3 +1,11 @@
+# Advanced Set Operations
+#   - Take away the like element from an array and only show the element different 
+#       <SYNTAX> setA.difference(setB)
+#   - Join (unite) sets into one 
+#       <SYNTAX> setA.union(setB)
+#   - Find out what element appeared in both sets
+#       <SYNTAX> setA.intersection(setB)
+
 # Lists, Tuples and Sets
 # - Lists (element is in order)
 # - Tuples (Not Mute-able)
@@ -52,6 +60,28 @@ l.remove('Jason')
 print(l)
 
 # - Tuple (not Mute-able)
+
+
+# Advanced Set Operations
+friend = {"Bob", "Mike", "Nick"}
+abroad = {"Bob", "Nick"}
+
+# take away the like element from an array and only show the element different 
+local_friends = friend.difference(abroad)  #calls the difference function inside friend set (Remove the elements in abroad from the friends set)
+print(local_friends)
+
+# Join (unite) sets into one 
+friends = friend.union(abroad)  #unites two sets (friends set + abroad set)
+print(friends)
+
+# Find out what element appeared in both sets
+art = {"Bob", "Cyrus", "Claire", "Clara", "Faye"}
+science = {"Cyrus", "Bob", "Adam", "Nick"}
+
+both = art.intersection(science)
+print(both)
+
+
 
 
 
