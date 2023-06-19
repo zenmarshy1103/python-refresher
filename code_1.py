@@ -1,88 +1,58 @@
-# Advanced Set Operations
-#   - Take away the like element from an array and only show the element different 
-#       <SYNTAX> setA.difference(setB)
-#   - Join (unite) sets into one 
-#       <SYNTAX> setA.union(setB)
-#   - Find out what element appeared in both sets
-#       <SYNTAX> setA.intersection(setB)
+# >> Boolean
+# Made up of comparison 
+# print(5 == 5) 
+# print(10 != 10)
+# print(5 > 4)
+# print(6 < 9)
 
-# Lists, Tuples and Sets
-# - Lists (element is in order)
-# - Tuples (Not Mute-able)
-# - Sets (Duplicated element is ignored and does not have order)
+#Keywords to calculate Boolean
+friends = ["Nick", "Wilson"]
+abroad = ["Nick", "Wilson"]
 
-#Lists
-# - Subscript is used to get get the position of the element ie l[0] first element etc
-l = [ "Bob", "Rolf", "Anne"]
+# print(friends == abroad)  #check if the elements are the same
+# print(friends is abroad)  #checks the area in the memory. exact same thing in the memory
 
-#Tuples
-# Cannot add or remove elements
-# - Subscript is used to get get the position of the element ie l[0] first element etc
-t = ("Bob", "Rolf", "Anne")
+# >> If Statement 
+# Allow us to use boolean to do certain operation
+# day_of_day = input("What day of the week is it today? ").lower()  #turn the input to lowercase using .lower()
 
-#Sets
-# Cannot contain duplicates, ignores the duplicated element
-# - cannot use subscript to get the position of the element
-# - sets do not have order
-s = {"Bob", "Rolf", "Anne", "Anne"}
-print(s)
+# if day_of_day == "monday":    # IF-ELSE If-ELSE Statement SYNTAX
+#     print("true")
+# elif day_of_day == "sunday":
+#     print("Enjoy your Sunday")
+# else:
+#     print("Enjoy your day")
 
-for element in s:
-    print(element)
+# >> The "in" Keyword
+# Check if a thing is inside a list, tuple, set and string
+# friends = ["Jen", "Claire", "Clara", "Cyrus"]
+# print("Cyrus" in friends)  #Check if Cyrus is inside the friends list
 
+# movies_watched = {"Demon Slayer", "Mashel", "Bleach"}
+# print("Bleach" in movies_watched)
 
-# > Change value of element
-# - List
-l[2] = "Jason"
-print(l)
+# >> If statement with "in" keyword
+# user_movie = input("Enter something you have watched recently: ")
 
-# - Tuples (not mute-able)
-# t[0] = "nick"
-# print(t)
-
-# - Sets (does not have subscription so values cannot be changed)
-
-# > Add Element
-# - List
-l.append('Faye')
-print(l)
-
-# - Tuple (not Mute-able)
-
-# - Sets
-s.add("Cyrus")
-print(s)
+# if user_movie in movies_watched:
+#     print(f"I have watched {user_movie} too!")
+# else:
+#     print("I have not watched that yet.")
 
 
-# > Remove Element
-# - List
-l.remove('Jason')
-print(l)
+# Guess Number Game
+number = 7
+user_input = input("Enter 'y' to play ")
 
-# - Tuple (not Mute-able)
-
-
-# Advanced Set Operations
-friend = {"Bob", "Mike", "Nick"}
-abroad = {"Bob", "Nick"}
-
-# take away the like element from an array and only show the element different 
-local_friends = friend.difference(abroad)  #calls the difference function inside friend set (Remove the elements in abroad from the friends set)
-print(local_friends)
-
-# Join (unite) sets into one 
-friends = friend.union(abroad)  #unites two sets (friends set + abroad set)
-print(friends)
-
-# Find out what element appeared in both sets
-art = {"Bob", "Cyrus", "Claire", "Clara", "Faye"}
-science = {"Cyrus", "Bob", "Adam", "Nick"}
-
-both = art.intersection(science)
-print(both)
-
-
-
-
+# if user_input == "y":
+# Use in keyword
+if user_input in ("y", "Y"):   #making a tuple of values to only allow - check if the user input is one of the two in the tuple
+    user_number = int(input("Guess a number: "))
+    if user_number == number:
+        print("You got it correct")
+    elif number - user_number in (1, -1):   #make a tuple to check if the condition is one of the two in the tuple
+        print("you were off by 1")
+    else:
+        print("It is wrong")
 
 
