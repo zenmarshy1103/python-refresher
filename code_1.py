@@ -1,40 +1,34 @@
-# Loops in Python
+# List Comprehensions
+# Allows us to create new list on the fly
 
-number = 7
+numbers = [1, 3 ,5]
 
+doubled = []
+ # List Comprehensions
+ # <SYNTAX> [<output> for <index> in <list>]
+double = [number * 2 for number in numbers]
 
-#While Loop
-# Conditional
+# Is literally the same as:
+for num in numbers:
+    doubled.append(num * 2)
 
-# while True: #indefinate Loop
-#     user_input = input("Would you like to play? (Y/n)")
+print("double List: ", double)
+print("doubled List: ", doubled)
 
-#     #Check if input is n, if it is terminate the while loop
-#     if user_input == "n":
-#         break
-
-#     user_number = int(input("Guess a number: "))
-#     if user_number == number:
-#         print("You got it correct")
-#     elif number - user_number in (1, -1):   #make a tuple to check if the condition is one of the two in the tuple
-#         print("you were off by 1")
-#     else:
-#         print("It is wrong")
-   
-
-#For Loop
-# Iterative
 
 friends = ["Cyrus", "Claire", "Clara", "Jason", "Faye"]
+# Using list comprehension
+# <SYNTAX> [<output> for <index> in <list> <condition> ]
+starts_c = [friend for friend in friends if friend.startswith("C")]
 
-for friend in friends:  #friend gets the index of the list
-    print(f"{friend} is one of my friends")
+# for friend in friends:
+#     if friend.startswith("C"):
+#         starts_c.append(friend)
+        
+print(starts_c)
 
-grades = [25, 50, 98, 100, 100]
-total = 0
-amount = len(grades)
 
-for grade in grades:
-    total += grade
-    
-print("The average for this class is: ", total / amount)    
+
+
+
+
