@@ -21,6 +21,7 @@ friends = ["Cyrus", "Claire", "Clara", "Jason", "Faye"]
 # <SYNTAX> [<output> for <index> in <list> <condition> ]
 starts_c = [friend for friend in friends if friend.startswith("C")]
 
+# Is the same as:
 # for friend in friends:
 #     if friend.startswith("C"):
 #         starts_c.append(friend)
