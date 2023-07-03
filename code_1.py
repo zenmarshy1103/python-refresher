@@ -1,13 +1,30 @@
-# Functions - Default Parameter Values
-# Default Parameter must be at the end of the parameter list ()
+# Functions - Returning Values
 
-# Setting Default Values
-def add(x, y=8):   # x is a required parameter, y is set as default with 8
+# Function without return
+#   - will return None by default
+def add(x, y):
     print(x + y)
+    
+add(5, 8)
 
-add(1)
-add(x=5)
-add(x=5, y=1)  # re-assiging y with new argument value which overwrites the default
+# Function with return
+#   - will return the value specified
+
+def addition(x, y):
+    return x + y
+
+sum = addition(5, 8)
+print(sum)
+
+
+def divide(divident, divisor):
+    if divisor !=0:
+        return int(divident / divisor)
+    else:
+        return "you fool!"
+    
+result = divide(15, 3)
+print(result)
 
 
 
