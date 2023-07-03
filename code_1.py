@@ -41,3 +41,9 @@ print(age)
 head, *tail = [1, 2, 3, 4, 5]   # *tail will collect all of the destructuring values into this variable
 print(head)
 print(tail)
+
+*head, tail = [5, 4, 3, 2, 1] # *head will collect all the front until the one before the last one
+print(head)
+print(tail)
+
+
