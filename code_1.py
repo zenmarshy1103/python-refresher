@@ -1,33 +1,21 @@
-# Functions 
-# Are callable variable that is defined by you
-# Defining our own function
-# Can reuse functions
-# Can use Global and Function Scope Variables
+# Functions - Arguments and Parameters
 
-# Function without return 
-# Defining the code
-def hello():
-    print("Hello!")
-  
-# Running the code    
-hello()
-
-def user_age_in_seconds():
-    user_age = int(input("Enter your age: "))
-    age_seconds = user_age * 365 * 24 * 60 * 60   
-    print(age_seconds)
+# Function with Parameter
+def add(x, y):   # x and y are Parameters
+    result = x + y
+    print(result)
     
-user_age_in_seconds()
+    
+add(5, 3)      #5 and 3 are argument going into the add() function
 
-# Using global scope varaible 
-friends = ["Jason", "Bob"]  
+def say_hello(first_name, last_name):
+    print(f"Hello {first_name} {last_name}")
 
-def add_friend():
-    friend_name = input("Enter your friend's name: ")
-    friends.append(friend_name)
+#Positional Argument: each argument corresponds to the position of the  parameters defined in the ()    
+say_hello("Jason", "Liu") 
 
-add_friend()    
-print(friends)
+# Not Positional Argument: keyword or Named arguments
+# Always use keyword arguments in python
+say_hello(last_name="Jia", first_name="Faye")
 
-
-
+ 
