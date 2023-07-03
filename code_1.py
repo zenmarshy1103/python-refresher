@@ -1,21 +1,16 @@
-# Functions - Arguments and Parameters
+# Functions - Default Parameter Values
+# Default Parameter must be at the end of the parameter list ()
 
-# Function with Parameter
-def add(x, y):   # x and y are Parameters
-    result = x + y
-    print(result)
-    
-    
-add(5, 3)      #5 and 3 are argument going into the add() function
+# Setting Default Values
+def add(x, y=8):   # x is a required parameter, y is set as default with 8
+    print(x + y)
 
-def say_hello(first_name, last_name):
-    print(f"Hello {first_name} {last_name}")
+add(1)
+add(x=5)
+add(x=5, y=1)  # re-assiging y with new argument value which overwrites the default
 
-#Positional Argument: each argument corresponds to the position of the  parameters defined in the ()    
-say_hello("Jason", "Liu") 
 
-# Not Positional Argument: keyword or Named arguments
-# Always use keyword arguments in python
-say_hello(last_name="Jia", first_name="Faye")
+
+
 
  
