@@ -1,54 +1,55 @@
-# Dictionary Comprehension
-#   - returns a dictionary with key-value pairs
-#   <SYNTAX>
-#       {key:value for index in list }
+# Object Oriented Programming
 
-# A list with tuples stored in it
-users = [
-    (0, "Bob", "password"),
-    (1, "Rolf", "bob123"),
-    (2, "Jose", "longp4assword"),
-    (3, "username", "1234"),
-]
 
-# Dictionary Comprehension: 
-#   - Adding key-Value pairs onto a new dictionary
-#   <SYNTAX>
-#       {key:value for index in list }
+student = {
+    "name": "Rolf",
+    "grades": (89, 90, 93, 78, 90),
+}
+# Function 
+def average(sequence):
+    return sum(sequence) / len(sequence)
 
-username_mapping = {user[1]: user for user in users} # Getting {"BoB": (0, "Bob", "password")} ...
-print(username_mapping)
+print(average(student["grades"]))
 
-# same as 
-mapping_users = {}  # Need to create an empty dictionary to put key-value pairs in
 
-for user in users:
-    mapping_users[user[1]] = user 
-    
-print(mapping_users)
+# Object Oriented Programming
+#   - Allows us to get information in regards to which student ie rolf.average (using the method inside the object)
 
-# REAL-WORLD CASE: Checking login (username and password)    
+# Initialise class
+class Student:
+    # Init method: for setting the class's properties
+    def __init__(self, name, grades):  # A parameter must be existing for init method, self: so the methods can take in the object that you have been constructing
+        # self.name = "rolf"
+        self.name = name    # when here are more than one parameter in the method parameter list, the parameter can be used just like a function parameter list
+        self.age = 23
+        self.grades = grades
+        
+    # Defining method inside the class, will take self as parameter (convention in Python)  -- self does not need to be named as it is.
+    def average_grades(self):   #the parameter must be the object that was created initially
+        return sum(self.grades) / len(self.grades)   
+     
 
-# Since username_mapping is:
-#{'Bob': (0, 'Bob', 'password'), 
-# 'Rolf': (1, 'Rolf', 'bob123'), 
-# 'Jose': (2, 'Jose', 'longp4assword'), 
-# 'username': (3, 'username', '1234')}
-print(username_mapping.keys())
+# Create an object that behaves exactly as the initialized class      
+# student = Student()   #calls the init method in the class and creates this empty thing called self and inside self has the name and age variable set in the method
+# print(student.name)
 
-#inputs for users
-username_input = input("Enter your username: ")
-password_input = input("Enter you password: ")
+#Putting in argument for the class to create an object with name and grade arguments
+rolf = Student("Rolf", (100, 100, 93, 78, 90))
+print(rolf.name)
+#calling method in the object
+print(rolf.average_grades())
 
-# check if the user input is contained in the dictionary 
-if username_input in username_mapping.keys():
-    # Destructure the value when calling the key to username and password and ignoring the 1st value
-    _, username, password = username_mapping[username_input]
+#Creates another object
+bob = Student("Bob", (55, 60, 99, 100, 100))
 
-    if  password_input == password:
-        print("Logging in")
-    else:
-        print("Try again")
-else:
-    # Output this line when the user input is not contained dictionary
-    print("Please inform IT")
+
+print(Student.average_grades(bob))  #using the student class to call the average_grades method on the bob object
+
+# simpler way to calling method on the object
+#   - Use the object that is created and call the method in it ( the object has the blue print of the class the "self" - refers to the object created by the class itself)
+print(bob.average_grades())
+
+
+
+
+
