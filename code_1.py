@@ -1,55 +1,50 @@
-# Object Oriented Programming
+# functions - Unpacking Keyword Arguments 
+#   - **kwargs unpacks arguments and store them in a kwarg dictionary
+#   - arguments passed in **kwargs must be a dictionary
+#   - ** can be used for destructing(unpack) a dictionary
 
+def named(**kwargs):  # ** collects keyword arguments and put it into a dictionary
+    print(kwargs)
+    
+named(name="jason", age=23)
 
-student = {
-    "name": "Rolf",
-    "grades": (89, 90, 93, 78, 90),
+# Using destructing on the dictionary and turn the properties into the parameters that the function parameter list contain
+def name(name, age):
+    print(name, age)
+
+#   - Dictionary
+details = {
+    "name": "Bob",
+    "age": 25
 }
-# Function 
-def average(sequence):
-    return sum(sequence) / len(sequence)
 
-print(average(student["grades"]))
+# destructuring dictionary
+#   <SYNTAX> **dictionary
 
+#calling the name function and place the destructuring dictionary as the argument of the function
+name(**details)  
 
-# Object Oriented Programming
-#   - Allows us to get information in regards to which student ie rolf.average (using the method inside the object)
-
-# Initialise class
-class Student:
-    # Init method: for setting the class's properties
-    def __init__(self, name, grades):  # A parameter must be existing for init method, self: so the methods can take in the object that you have been constructing
-        # self.name = "rolf"
-        self.name = name    # when here are more than one parameter in the method parameter list, the parameter can be used just like a function parameter list
-        self.age = 23
-        self.grades = grades
+def print_nicely(**kwargs):
+    #<Note> **kwargs collects the keyword argument and store them in a dictionary called kwarg
+    named(**kwargs) # here the argument to the calling function destructure the kwarg dictionary and passed in the named arguments
+    # Destructuring the kwarg (dictionary) into arg and value and print them out
+    for arg, value in kwargs.items(): # Kwarg here gets the dictionary collected by the **kwargs from the print_nicely parameter list
+        print(f"{arg}: {value}")
         
-    # Defining method inside the class, will take self as parameter (convention in Python)  -- self does not need to be named as it is.
-    def average_grades(self):   #the parameter must be the object that was created initially
-        return sum(self.grades) / len(self.grades)   
-     
-
-# Create an object that behaves exactly as the initialized class      
-# student = Student()   #calls the init method in the class and creates this empty thing called self and inside self has the name and age variable set in the method
-# print(student.name)
-
-#Putting in argument for the class to create an object with name and grade arguments
-rolf = Student("Rolf", (100, 100, 93, 78, 90))
-print(rolf.name)
-#calling method in the object
-print(rolf.average_grades())
-
-#Creates another object
-bob = Student("Bob", (55, 60, 99, 100, 100))
+print_nicely(named="Bob", age=25)
 
 
-print(Student.average_grades(bob))  #using the student class to call the average_grades method on the bob object
+def both(*args, **kwargs):
+    #   - *args collects all the positional arguments and store them in a arg tuple
+    print(args)
+    #   - **kwargs collects all the named arguments and store them in a kwarg dictionary
+    print(kwargs)
 
-# simpler way to calling method on the object
-#   - Use the object that is created and call the method in it ( the object has the blue print of the class the "self" - refers to the object created by the class itself)
-print(bob.average_grades())
+both(1, 3, 5, name="Jason", age=25)
 
-
-
-
+def myfunction(**kwargs):
+    print(kwargs)
+    
+# <REMEMBER>
+#   what is passed into **kwarg must be a dictionary of it will come up with an error
 
