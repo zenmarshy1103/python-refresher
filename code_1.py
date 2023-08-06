@@ -1,30 +1,66 @@
-# Object Oriented Programming - Magic Methods: _ _str _ _ and _ _ repr _ _
-#   - Special Methods: _ _ method _ _ will be called by python automatically at times
-#   - These two method is used for representing an object (Not compulsory to use)
+# Object Oriented Programming - Class Methods and Static Methods
+#   - 
 
-class Person:
-    def __init__(self, name, age): # Special (Magic) Method
-        # The method gives us an empty object called self
+# Instance Method
+#   - Method inside a class
+class ClassTest:
+    def instance_method(self): #self will be the instance or the object 
+        print(f"Called instance_method of {self}")
         
-        #setting the name and age properties of the empty object (self)
-        self.name = name 
-        self.age = age
+    @classmethod
+    def class_method(cls):  #cls will be the class itself in this case cls will be the ClassTest class
+        print(f"Called class_method of {cls}")
         
-    # A special method that turns your object into a string representation
-    #   - To print out nice and easy to read string to users     
-    # def __str__(self):
-    #     return f"This Person {self.name}, {self.age} years old"
+    @staticmethod  
+    def static_method():   # Does not need an argument at all 
+        print("Called Static_method")
+        
+
+# Calling instance method
+#   Method One
+test = ClassTest()
+test.instance_method()
+
+#   Method Two
+# ClassTest.instance_method(test)
+
+# Calling class method
+ClassTest.class_method()
+
+# Calling Static Method
+ClassTest.static_method()
+
+
+#Factory Example (Class Method)
+
+class Book:
+    TYPES = ("hardcover", "paperback")  #property for the class
     
-    # A special method that is used to tell programers to read the string here that we are printing out an object
-    #   - Should return a string that allows us to recreate the original object with ease
-    #   - to display this make sure the __str__ method is commented or not present or python will print out the __str__ not the __repr__ method
+    def __init__(self, name, book_type, weight):
+        self.name = name
+        self.book_type = book_type
+        self.weight = weight
+        
     def __repr__(self):
-        return f"<Person('{self.name}', {self.age})>"
-        
-        
-        
+        return f"<Book {self.name}, {self.book_type}, weighting {self.weight}grams>"
     
-jason = Person("Jason", 34)  # When creating an object from the class, python calls the __init__ method even when you didn't call it
-print(jason)
+    @classmethod
+    def hardcover(cls, name, page_weight):   # cls is book class hence can use cls 
+        return cls(name, cls.TYPES[0], page_weight + 100)
 
+    @classmethod
+    def paperback(cls, name, page_weight):  # Using the class name also works (Book)
+        return Book(name, Book.TYPES[1], page_weight)
+    
 
+#Creating an instance of book
+book = Book("Harry Porter", "hardcover", 1500)
+print(book)
+
+#Creating an instance and calling classmethod
+book = Book.hardcover("Demon Hunter", 500)
+print(book)
+
+book_1 = Book.paperback("Bleach", 300)
+print(book_1)        
+    
