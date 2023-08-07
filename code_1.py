@@ -1,66 +1,53 @@
-# Object Oriented Programming - Class Methods and Static Methods
-#   - 
+# Object Oriented Programming - Class Inheritance
+#   Inheritance: Allows one class to take some methods and properties from another class
+#   Hierarchy of calling (if method cannot be found):
+#       - 1st: calling in current class
+#       - 2nd: Parent class (if current class is inheriting from parent class)
+#       - 3rd: Object Class
+#       - if it does not exist in any of the above, an error will be prompted
 
-# Instance Method
-#   - Method inside a class
-class ClassTest:
-    def instance_method(self): #self will be the instance or the object 
-        print(f"Called instance_method of {self}")
-        
-    @classmethod
-    def class_method(cls):  #cls will be the class itself in this case cls will be the ClassTest class
-        print(f"Called class_method of {cls}")
-        
-    @staticmethod  
-    def static_method():   # Does not need an argument at all 
-        print("Called Static_method")
-        
-
-# Calling instance method
-#   Method One
-test = ClassTest()
-test.instance_method()
-
-#   Method Two
-# ClassTest.instance_method(test)
-
-# Calling class method
-ClassTest.class_method()
-
-# Calling Static Method
-ClassTest.static_method()
-
-
-#Factory Example (Class Method)
-
-class Book:
-    TYPES = ("hardcover", "paperback")  #property for the class
+class Device:
+    def __init__(self, name, connected_by):
+         self.name = name 
+         self. connected_by = connected_by
+         self.connected = True
+         
+    def __str__(self):
+        return f"Device {self.name!r} ({self.connected_by})"   # !r - calls the repr method of self.name (in this case) amd shows up with the quotes around it ' '
     
-    def __init__(self, name, book_type, weight):
-        self.name = name
-        self.book_type = book_type
-        self.weight = weight
+    def disconnect(self):
+        self.connected = False
+        print("Disconnected.")
         
-    def __repr__(self):
-        return f"<Book {self.name}, {self.book_type}, weighting {self.weight}grams>"
+        
+printer = Device("printer", "USB")
+print(printer)
+printer.disconnect()
+
+# Inheritance 
+#   - Creating a printer class which has all the methods and properties of the device class plus its own printing methods
+
+class Printer(Device): #create a printer class and it inherits from device
+    def __init__(self, name, connected_by, capacity):
+        super().__init__(name, connected_by)   #super() gets the super class (Parent Class) in this case it will be the device class
+        self.capacity = capacity   # <- Maximum Capacity of the the printer 
+        self.remaining_pages = capacity # <- Current Capacity of the printer 
     
-    @classmethod
-    def hardcover(cls, name, page_weight):   # cls is book class hence can use cls 
-        return cls(name, cls.TYPES[0], page_weight + 100)
-
-    @classmethod
-    def paperback(cls, name, page_weight):  # Using the class name also works (Book)
-        return Book(name, Book.TYPES[1], page_weight)
+    def __str__(self):
+        return f"{super().__str__()} ({self.remaining_pages} pages remaining)"
     
+    def print(self, pages):
+        if not self.connected:
+            print("Your printer is not connected")
+            return 
+        print(f"Printing {pages} pages.")
+        self.remaining_pages -= pages
+        
+#Create a new printer class with printer as variable
+printer = Printer("Printer", "USB", 500)
 
-#Creating an instance of book
-book = Book("Harry Porter", "hardcover", 1500)
-print(book)
+#calling the print method inside the printer class
+printer.print(20)
+print(printer)
+printer.disconnect()
 
-#Creating an instance and calling classmethod
-book = Book.hardcover("Demon Hunter", 500)
-print(book)
-
-book_1 = Book.paperback("Bleach", 300)
-print(book_1)        
-    
