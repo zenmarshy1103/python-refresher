@@ -1,53 +1,44 @@
-# Object Oriented Programming - Class Inheritance
-#   Inheritance: Allows one class to take some methods and properties from another class
-#   Hierarchy of calling (if method cannot be found):
-#       - 1st: calling in current class
-#       - 2nd: Parent class (if current class is inheriting from parent class)
-#       - 3rd: Object Class
-#       - if it does not exist in any of the above, an error will be prompted
+# Object Oriented Programming - Class Composition
+#   Counter Part to Inheritance:  To build out classes using other classes
+#       - This is used much more than inheritance 
+#   Use Composition: when you are not going to use the inherited properties methods etc.
+# <Theory>
+#   - Inheritance: Book is a bookshelf
+#   - Composition: A bookshelf has many books 
 
-class Device:
-    def __init__(self, name, connected_by):
-         self.name = name 
-         self. connected_by = connected_by
-         self.connected = True
-         
-    def __str__(self):
-        return f"Device {self.name!r} ({self.connected_by})"   # !r - calls the repr method of self.name (in this case) amd shows up with the quotes around it ' '
-    
-    def disconnect(self):
-        self.connected = False
-        print("Disconnected.")
+
+# class BookShelf:
+#     def __init__(self, quantity):
+#         self.quantity = quantity
         
-        
-printer = Device("printer", "USB")
-print(printer)
-printer.disconnect()
+#     def __str__(self):
+#         return f"BookShelf with {self.quantity} books"
 
-# Inheritance 
-#   - Creating a printer class which has all the methods and properties of the device class plus its own printing methods
-
-class Printer(Device): #create a printer class and it inherits from device
-    def __init__(self, name, connected_by, capacity):
-        super().__init__(name, connected_by)   #super() gets the super class (Parent Class) in this case it will be the device class
-        self.capacity = capacity   # <- Maximum Capacity of the the printer 
-        self.remaining_pages = capacity # <- Current Capacity of the printer 
+class BookShelf:
+    def __init__(self, *books): # *books will take in a bunch of book objects
+        self.books = books
     
     def __str__(self):
-        return f"{super().__str__()} ({self.remaining_pages} pages remaining)"
+        return f"BookShelf with {len(self.books)} books."
     
-    def print(self, pages):
-        if not self.connected:
-            print("Your printer is not connected")
-            return 
-        print(f"Printing {pages} pages.")
-        self.remaining_pages -= pages
+class Book:
+    def __init__(self, name):
+        self.name = name
         
-#Create a new printer class with printer as variable
-printer = Printer("Printer", "USB", 500)
+    def __str__(self):
+        return f"Book {self.name}"
+        
 
-#calling the print method inside the printer class
-printer.print(20)
-print(printer)
-printer.disconnect()
+
+# Creating book instances
+book = Book("Harry Porter")
+book1 = Book("Python 101")
+shelf = BookShelf(book, book1)
+
+print(book)
+print(shelf)
+
+
+
+
 
